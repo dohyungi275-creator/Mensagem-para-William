@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Você recebeu uma coisa 👀</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Arial,sans-serif;background:linear-gradient(145deg,#171522,#30203a);color:#fff;display:flex;align-items:center;justify-content:center;padding:18px;overflow:hidden}
+.card{width:min(94vw,500px);background:#211d2bee;border:1px solid #ffffff18;border-radius:28px;padding:30px 23px;text-align:center;box-shadow:0 25px 80px #0009}
+.small{font-size:12px;letter-spacing:2px;color:#aaa;text-transform:uppercase}
+.emoji{font-size:52px;margin:14px 0}
+h1{font-size:29px;line-height:1.15;margin:10px 0 16px}
+p{font-size:17px;line-height:1.55;color:#e5e1e8}
+button{width:100%;border:0;border-radius:16px;padding:15px;margin:7px 0;background:#34303e;color:#fff;font-size:16px;font-weight:700;cursor:pointer}
+button:hover{transform:scale(1.02)}
+.main{background:#c65388}
+.hidden{display:none}
+.bar{height:7px;background:#34303e;border-radius:10px;overflow:hidden;margin:22px 0}
+.fill{height:100%;width:0;background:#c65388;transition:1.4s}
+.chat{background:#302b38;border-radius:18px;padding:16px;text-align:left;margin:18px 0}
+.me{color:#ff7eb0}.friend{color:#9fc7ff}
+.heart{position:fixed;bottom:-30px;font-size:24px;animation:up 3s linear forwards;pointer-events:none}
+@keyframes up{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="card">
+
+<section id="s0">
+<div class="small">🔗 mensagem especial</div>
+<div class="emoji">👀</div>
+<h1>Você recebeu um link.</h1>
+<p>Sim, eu poderia simplesmente ter mandado uma mensagem normal...</p>
+<p>Mas onde estaria a graça?</p>
+<p style="color:#aaa;font-size:14px">Prometo que não é golpe. 😂</p>
+<div class="bar"><div class="fill" id="fill"></div></div>
+<button class="main" onclick="start()">Clique aqui, seu curioso. 👀</button>
+</section>
+
+<section id="s1" class="hidden">
+<div class="small">🚨 assunto extremamente sério</div>
+<div class="emoji">🤨</div>
+<h1>Precisamos esclarecer uma coisa.</h1>
+<p>Existe uma discussão que já dura tempo demais.</p>
+<div class="chat">
+<span class="me">Eu:</span> “Eu sou o seu tormento.” 😂<br><br>
+<span class="friend">Você:</span> “Não é.”<br><br>
+<span class="me">Eu:</span> “Sou sim.”<br><br>
+<span class="friend">Você:</span> “Não é.”
+</div>
+<p><b>Então hoje vamos resolver isso de uma vez.</b></p>
+<button class="main" onclick="next(2)">Vamos aos fatos. 🔎</button>
+</section>
+
+<section id="s2" class="hidden">
+<div class="small">🔎 investigação</div>
+<div class="emoji">😂</div>
+<h1>Fato nº 1</h1>
+<p>Eu apareço para te perturbar.</p>
+<p>Você diz que não é tormento.</p>
+<p>Eu continuo te perturbando.</p>
+<p><b>Logo...</b></p>
+<p style="font-size:22px">eu sou seu tormento SIM. 🤡</p>
+<button onclick="next(3)">Argumento rejeitado pelo réu. 😂</button>
+</section>
+
+<section id="s3" class="hidden">
+<div class="small">⚖️ tribunal da amizade</div>
+<div class="emoji">🧑‍⚖️</div>
+<h1>Última chance de defesa.</h1>
+<p>Por que você insiste em dizer que eu <b>não</b> sou seu tormento?</p>
+<button onclick="answer('porque')">Porque você é gente boa. 😌</button>
+<button onclick="answer('porque2')">Porque eu gosto de você, infelizmente. 😂</button>
+<button onclick="answer('nenhum')">Não vou responder sem meu advogado. 🤡</button>
+</section>
+
+<section id="s4" class="hidden">
+<div class="small">💗 resultado da investigação</div>
+<div class="emoji">🫶</div>
+<h1>Tá bom... talvez eu aceite.</h1>
+<p>Talvez eu não seja exatamente seu tormento.</p>
+<p>Talvez eu seja só aquela pessoa que apareceu na sua vida para:</p>
+<p><b>te irritar, te fazer rir, te ouvir, te perturbar e estar por perto.</b> ❤️</p>
+<button class="main" onclick="next(5)">Mas ainda tem uma coisa... 🥹</button>
+</section>
+
+<section id="s5" class="hidden">
+<div class="small">agora sem brincadeira</div>
+<div class="emoji">🫣</div>
+<h1>Eu sumi.</h1>
+<p>E eu sei que talvez você tenha sentido minha falta — nem que tenha sido só um pouquinho. 😂</p>
+<p>Queria te pedir desculpas por ter ficado distante.</p>
+<p>Às vezes a vida acontece, a gente se enrola e acaba deixando passar tempo demais.</p>
+<button class="main" onclick="next(6)">O que eu queria te dizer é... ❤️</button>
+</section>
+
+<section id="s6" class="hidden">
+<div class="small">❤️ mensagem do seu tormento</div>
+<div class="emoji">🫂</div>
+<h1>Desculpa pelo sumiço, meu amigo.</h1>
+<p>Você é uma daquelas pessoas que eu tenho sorte de ter na minha vida.</p>
+<p>Mesmo com nossas implicâncias, nossas discussões bobas e eu insistindo que sou seu tormento... 😂</p>
+<p><b>Eu gosto demais da nossa amizade.</b></p>
+<p>Então, de verdade: me desculpa por ter sumido. ❤️</p>
+<button class="main" onclick="finish()">Aceito suas desculpas. 🫂</button>
+</section>
+
+<section id="s7" class="hidden">
+<div class="small">✅ caso encerrado</div>
+<div class="emoji">😂🫂❤️</div>
+<h1>Pronto. Agora está oficializado.</h1>
+<p>Você pode continuar dizendo que eu <b>não sou seu tormento</b>.</p>
+<p>Eu vou continuar dizendo que <b>sou sim</b>.</p>
+<p>E assim nossa amizade seguirá normalmente. 😂</p>
+<p><b>Obrigado por ser meu melhor amigo.</b> ❤️</p>
+<p style="color:#aaa;font-size:14px">Agora não some você também, hein? 👀</p>
+</section>
+
+</div>
+<script>
+let cur=0;
+function show(n){document.getElementById('s'+cur).classList.add('hidden');document.getElementById('s'+n).classList.remove('hidden');cur=n}
+function start(){document.getElementById('fill').style.width='100%';setTimeout(()=>show(1),700)}
+function next(n){show(n)}
+function answer(){show(4)}
+function finish(){
+ show(7);
+ for(let i=0;i<28;i++){
+  const h=document.createElement('div');h.className='heart';
+  h.textContent=['❤️','😂','🫶','💕','💖'][Math.floor(Math.random()*5)];
+  h.style.left=Math.random()*100+'vw';h.style.animationDelay=Math.random()*1.2+'s';
+  document.body.appendChild(h);setTimeout(()=>h.remove(),4200)
+ }
+}
+</script>
+</body>
+</html>
